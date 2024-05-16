@@ -26,3 +26,20 @@ class WebScraper (scrapeObject):
             return
 
         self.list = jsonData["list"]
+
+    @classmethod
+    def _fetch_html(cls, url, request_args = None):
+        request_args = request_args or {}
+        headers = dict(cls.request_headers)
+        if url:
+            headers["Host"] = urlparse(url).netloc
+
+        user_headers = request_args.pop("headers", {})
+        headers.update(user_headers)
+        response = requests.get(url, headers = headers, **request_args)
+        if response.encoding == "ISO-8859-1" and not "ISO-8859-1" in response.headers.get(
+            "Content-Type", ""
+        ):
+            response.encoding = response.apparent_encoding
+            html = response.text
+            return html
