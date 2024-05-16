@@ -11,10 +11,10 @@ url = 'https://stackoverflow.com/questions/78490118/eslint-for-empty-statements'
 
 # We can add single or multiple phrases here.
 # We can add urls here.
-wanted_list = ["no-unused-expressions"]
+required_phrases_list = ["no-unused-expressions"]
 
-scraper = WebScraper()
-result = scraper.build(url, wanted_list)
+webscraper = WebScraper()
+result = webscraper.build(url, required_phrases_list)
 print(result)
 ```
 
