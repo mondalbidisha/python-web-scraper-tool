@@ -1,2 +1,29 @@
-# python-web-scraper-tool
-Generic Web Scraper 
+# Python Web Scraping Tool
+
+### Example Usage
+
+Example usage to fetch all phrases from a stackoverflow page:
+
+```python
+from web_scraper import WebScraper
+
+url = 'https://stackoverflow.com/questions/78490118/eslint-for-empty-statements'
+
+# We can add single or multiple phrases here.
+# We can add urls here.
+wanted_list = ["no-unused-expressions"]
+
+scraper = WebScraper()
+result = scraper.build(url, wanted_list)
+print(result)
+```
+
+Here's the output:
+```python
+[
+    'no-unused-expressions', 
+    '@typescript-eslint/no-unused-expressions', 
+    'demo in TypeScript ESLint playground'
+]
+```
+
